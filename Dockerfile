@@ -10,14 +10,14 @@ RUN apt-get update && apt-get install -y wget unzip
 RUN addgroup --gid 1234 minecraft
 RUN adduser --disabled-password --home=/data --uid 1234 --gid 1234 --gecos "minecraft user" minecraft
 
-RUN mkdir /tmp/feed-the-beast && cd /tmp/feed-the-beast && \
+RUN mkdir -p /data && cd /data && \
 
         wget -c $DOWNLOADLINK -O FTBContinuumServer.zip && \
         unzip FTBContinuumServer.zip && \
         rm FTBContinuumServer.zip && \
         bash -x FTBInstall.sh && \
         echo 'eula=true' > eula.txt && \
-        chown -R minecraft /tmp/feed-the-beast
+        chown -R minecraft /data
 
 
 
@@ -25,7 +25,7 @@ USER minecraft
 
 EXPOSE 25565
 
-ADD ServerStart.sh /start
+ADD /data/ServerStart.sh /start
 
 VOLUME /data
 WORKDIR /data
