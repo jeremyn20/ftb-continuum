@@ -16,17 +16,18 @@ RUN mkdir /tmp/feed-the-beast && cd /tmp/feed-the-beast && \
         unzip FTBContinuumServer.zip && \
         rm FTBContinuumServer.zip && \
         bash -x FTBInstall.sh && \
+        echo 'eula=true' > eula.txt && \
         chown -R minecraft /tmp/feed-the-beast
+
 
 
 USER minecraft
 
 EXPOSE 25565
 
-#ADD start.sh /start
+ADD ServerStart.sh /start
 
 VOLUME /data
-#ADD server.properties /tmp/server.properties
 WORKDIR /data
 
 CMD /start
