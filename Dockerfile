@@ -26,7 +26,7 @@ EXPOSE 25565
 ADD start.sh /start
 
 VOLUME /data
-ADD server.properties /tmp/server.properties
+#ADD server.properties /tmp/server.properties
 WORKDIR /data
 
 CMD /start
