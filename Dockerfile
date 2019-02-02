@@ -12,7 +12,7 @@ RUN adduser --disabled-password --home=/data --uid 1234 --gid 1234 --gecos "mine
 
 RUN mkdir /tmp/feed-the-beast && cd /tmp/feed-the-beast && \
 
-        wget -c DOWNLOADLINK -O FTBContinuumServer.zip && \
+        wget -c $DOWNLOADLINK -O FTBContinuumServer.zip && \
         unzip FTBContinuumServer.zip && \
         rm FTBContinuumServer.zip && \
         bash -x FTBInstall.sh && \
