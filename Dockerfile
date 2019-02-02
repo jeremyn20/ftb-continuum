@@ -22,7 +22,7 @@ USER minecraft
 EXPOSE 25565
 
 ADD start.sh /start
-
+RUN ["chmod", "+x", "/start"]
 VOLUME /data
 ADD server.properties /tmp/server.properties
 WORKDIR /data
